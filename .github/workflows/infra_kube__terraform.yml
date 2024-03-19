@@ -27,25 +27,45 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
+      - name: Configure AWS Credentials
+        run: |
+          aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          
       - name: Checkout Repository
         uses: actions/checkout@v2
 
       - name: Login to Docker Hub
         run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
+
       - name: Install Terraform
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.1.7
 
-      - name: Terraform Init
-        run: terraform init
+      - name: Initialize Terraform
+        id: init
+        run: |
+          cd terraform
+          terraform init \
+            -backend-config="access_key=${{ secrets.AWS_ACCESS_KEY_ID }}" \
+            -backend-config="secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}"
 
-      - name: Terraform Plan
-        run: terraform plan
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate -no-color    
+
+      - name: Plan Terraform
+        run: |
+          cd terraform
+          terraform plan -out=tfplan
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve
+        run: |
+          cd terraform
+          terraform apply -auto-approve tfplan | tee output.txt
+          
 #        env:
 #          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
 #          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
