@@ -7,10 +7,27 @@ on:
 
 jobs:
   terraform:
+    env:
+#      TF_VAR_rdsUsername: ${{ secrets.DB_USERNAME }}
+#      TF_VAR_rdsPassword: ${{ secrets.DB_PASSWORD }}
+#      TF_VAR_rdsName: ${{ secrets.DB_NAME }}
+#      TF_VAR_aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#      TF_VAR_aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      DB_ENDPOINT: ${{ secrets.DB_ENDPOINT }}
+      DB_NAME: ${{ secrets.DB_NAME }}
+      DOCKERHUB_IMAGE_URL: ${{ secrets.DOCKERHUB_IMAGE_URL }}
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+
+      - name: Login to Docker Hub
+        run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
       - name: Install Terraform
         uses: hashicorp/setup-terraform@v2
@@ -25,6 +42,6 @@ jobs:
 
       - name: Terraform Apply
         run: terraform apply -auto-approve
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#        env:
+#          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
