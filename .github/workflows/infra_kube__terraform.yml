@@ -62,16 +62,7 @@ jobs:
       - name: Plan Terraform
         run: |
           cd terraform
-          terraform plan -input=false -out=tfplan \
-           -var "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" \
-           -var "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" \
-           -var "DB_ENDPOINT=${{ secrets.DB_ENDPOINT }}" \
-           -var "DB_NAME=${{ secrets.DB_NAME }}" \
-           -var "DB_USERNAME=${{ secrets.DB_USERNAME }}" \
-           -var "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" \
-           -var "DOCKERHUB_IMAGE_URL=${{ secrets.DOCKERHUB_IMAGE_URL }}" \
-           -var "DOCKERHUB_USERNAME=${{ secrets.DOCKERHUB_USERNAME }}" \
-           -var "DOCKERHUB_PASSWORD=${{ secrets.DOCKERHUB_PASSWORD }}"
+          terraform plan -var "rdsUsername=${{ secrets.DB_USERNAME }}" -var "rdsPassword=${{ secrets.DB_PASSWORD }}"
 
       - name: Terraform Apply
         run: |
