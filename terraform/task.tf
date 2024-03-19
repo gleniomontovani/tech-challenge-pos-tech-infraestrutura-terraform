@@ -9,7 +9,7 @@ resource "aws_ecs_task_definition" "task" {
       environment = [
         {
           name  = "API_JDBC_URL"
-          value = "jdbc:postgresql://${var.db_endpoint}/${var.db_name}"
+          value = "jdbc:postgresql://${var.db_endpoint}:5432/${var.db_name}"
         },
         {
           name  = "API_JDBC_USERNAME"
