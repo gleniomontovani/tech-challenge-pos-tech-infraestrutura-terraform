@@ -62,7 +62,7 @@ jobs:
       - name: Plan Terraform
         run: |
           cd terraform
-          terraform plan -var "rdsUsername=${{ secrets.DB_USERNAME }}" -var "rdsPassword=${{ secrets.DB_PASSWORD }}"
+          terraform plan -input=false -out=tfplan -var "rdsUsername=${{ secrets.DB_USERNAME }}" -var "rdsPassword=${{ secrets.DB_PASSWORD }}"
 
       - name: Terraform Apply
         run: |
