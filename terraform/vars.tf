@@ -10,11 +10,11 @@ variable "regionDefault" {
   default = "us-east-1" 
 }
 
-variable "rdsUsername" {
+variable "db_username" {
   description = "Username for PostgreSQL"
 }
 
-variable "rdsPassword" {
+variable "db_password" {
   description = "Password for PostgreSQL"
 }
 
@@ -34,16 +34,16 @@ variable "aws_secret_key" {
   description = "SECRET ACCESS AWS"
 }
 
-variable "dockerhub_username" {
+variable "docker_hub_image_url" {
+  description = "Image the API in Docker Hub"
+}
+
+variable "docker_hub_username" {
   description = "Nome de usuário do Docker Hub"
 }
 
-variable "dockerhub_password" {
+variable "docker_hub_password" {
   description = "Senha do Docker Hub"
-}
-
-variable "dockerhub_image_url" {
-  description = "Image the API in Docker Hub"
 }
 
 variable "instanceClass" {

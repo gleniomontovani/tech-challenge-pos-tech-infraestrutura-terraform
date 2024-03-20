@@ -4,7 +4,7 @@ resource "aws_ecs_task_definition" "task" {
     {
       name      = "${var.projectName}"
       essential = true,
-      image     = "${var.dockerhub_image_url}:latest",
+      image     = "${var.docker_hub_image_url}:latest",
       command   = ["-Dsonar.search.javaAdditionalOpts=-Dnode.store.allow_mmap=false"]
       environment = [
         {
@@ -13,11 +13,11 @@ resource "aws_ecs_task_definition" "task" {
         },
         {
           name  = "API_JDBC_USERNAME"
-          value = "${var.rdsUsername}"
+          value = "${var.db_username}"
         },
         {
           name  = "API_JDBC_PASSWORD"
-          value = "${var.rdsPassword}"
+          value = "${var.db_password}"
         }
       ]
       logConfiguration = {
