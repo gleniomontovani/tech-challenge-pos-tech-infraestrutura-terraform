@@ -3,9 +3,23 @@ resource "aws_lb" "alb" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = ["${aws_security_group.sg.id}"]
-  subnets            = ["${var.subnet01}", "${var.subnet02}", "${var.subnet03}"]
+  subnets            = [var.subnet01, var.subnet02, var.subnet03]
   idle_timeout       = 60
 
+}
+
+resource "aws_lb_target_group" "tg" {
+  name     = "TG-${var.projectName}"
+  port     = 8081
+  protocol = "HTTP"
+  vpc_id   = var.vpcId
+
+  health_check {
+    path     = "/"
+    port     = 8081
+    matcher  = "200"
+    protocol = "HTTP"
+  }
 }
 
 resource "aws_lb_listener" "alb-listener-redirect" {
