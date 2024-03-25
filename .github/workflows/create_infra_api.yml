@@ -23,19 +23,14 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-
       - name: Install Terraform
         uses: hashicorp/setup-terraform@v2
-        with:
-          terraform_version: 1.1.7
 
       - name: Initialize Terraform
         id: init
         run: |
           cd terraform
-          terraform init \
-            -backend-config="access_key=${{ secrets.AWS_ACCESS_KEY_ID }}" \
-            -backend-config="secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}"
+          terraform init 
         working-directory: ./terraform
 
       - name: Terraform Validate
