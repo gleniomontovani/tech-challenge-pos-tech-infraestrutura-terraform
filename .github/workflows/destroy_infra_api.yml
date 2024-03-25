@@ -17,6 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TF_WORKING_DIR: ${{ github.event.inputs.dir }}
+      TF_VAR_aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      TF_VAR_aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       
     steps:
       - name: Checkout Repository
@@ -30,7 +32,7 @@ jobs:
           aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
 
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v1
+        uses: hashicorp/setup-terraform@v2
 
       - name: Initialize Terraform
         run: |
