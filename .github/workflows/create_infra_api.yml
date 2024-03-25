@@ -28,9 +28,7 @@ jobs:
 
       - name: Initialize Terraform
         id: init
-        run: |
-          cd terraform
-          terraform init 
+        run: terraform init 
         working-directory: ./terraform
 
       - name: Terraform Validate
@@ -39,14 +37,10 @@ jobs:
         working-directory: ./terraform
 
       - name: Plan Terraform
-        run: |
-          cd terraform
-          terraform plan -out=tfplan -input=true 
+        run: terraform plan -out=tfplan -input=true 
         working-directory: ./terraform  
 
       - name: Terraform Apply
-        run: |
-          cd terraform
-          terraform apply -auto-approve
+        run: terraform apply -auto-approve tfplan
         working-directory: ./terraform  
         
