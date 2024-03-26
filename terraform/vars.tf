@@ -18,24 +18,20 @@ variable "aws_secret_key" {
   description = "SECRET ACCESS AWS"
 }
 
-variable "subnet01" {
-  default = "subnet-0b84de7e928a9376f"
+variable "subnet_01_cidr_block" {
+  default = "10.0.1.0/24"
 }
 
-variable "subnet02" {
-  default = "subnet-04a69234760025f8e"
+variable "subnet_02_cidr_block" {
+  default = "10.0.2.0/24"
 }
 
-variable "subnet03" {
-  default = "subnet-0bd942a3a3550120f"
+variable "subnet_03_cidr_block" {
+  default = "10.0.3.0/24"
 }
 
-variable "vpcId" {
-  default = "vpc-008501f5a531a84b1"
-}
-
-variable "vpcCIDR" {
-  default = "172.31.0.0/16"
+variable "vpc_cidr_block" {
+  default = "10.0.0.0/16"
 }
 
 variable "AWSAccount" {

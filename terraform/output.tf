@@ -1,3 +1,3 @@
-output "load_balancer_dns" {
-  value = aws_lb.alb.dns_name
+output "eks_cluster_endpoint" {
+  value = module.eks.cluster_endpoint
 }
