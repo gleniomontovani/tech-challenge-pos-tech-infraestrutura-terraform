@@ -1,10 +1,12 @@
 name: Create Infra API
 
 on:
-  push:
-  #pull_request:
-    branches: 
-      - main
+  workflow_dispatch:
+    inputs:
+      dir:
+        description: 'Diretório com os recursos a serem criados.'
+        required: true
+        default: 'terraform'
 
 jobs:
   terraform:
@@ -43,4 +45,3 @@ jobs:
       - name: Terraform Apply
         run: terraform apply -auto-approve tfplan
         working-directory: ./terraform  
-        

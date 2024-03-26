@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       dir:
-        description: 'Directory with resources to be destroyed'
+        description: 'Diretório com os recursos a serem destruídos.'
         required: true
         default: 'terraform'
 
