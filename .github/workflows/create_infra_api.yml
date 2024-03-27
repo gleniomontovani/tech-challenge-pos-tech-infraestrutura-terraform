@@ -42,10 +42,7 @@ jobs:
         run: terraform plan -out=tfplan -input=true 
         working-directory: ./terraform  
 
-      # Depois criar um step para obter a URL do Load Balancer e salvar no S3
-      # O comando para obter a URL gerada no Kubernetes é:
-      # kubectl get service SEU_SERVICO -o=jsonpath='{.status.loadBalancer.ingress[0].hostname}'
-
       - name: Terraform Apply
         run: terraform apply -auto-approve tfplan
         working-directory: ./terraform  
+  
