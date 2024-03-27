@@ -8,7 +8,7 @@ resource "aws_security_group" "sg_tech_challenge_api_eks" {
     from_port   = 8081
     to_port     = 8081
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = [var.vpc_cidr_block]
   }
 
   egress {
