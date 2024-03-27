@@ -48,7 +48,7 @@ jobs:
 
       - name: Delete Kubernetes Configuration
         run: |
-          kubectl delete deployment,services,secrets,hpa,configmaps --selector=app=tech-challenge-pos-tech  
+          kubectl delete deployment,services,secrets,hpa,configmaps --selector=app=${{ secrets.APP_NAME }}
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
