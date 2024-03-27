@@ -2,7 +2,7 @@ module "eks" {
   source          = "terraform-aws-modules/eks/aws"
   cluster_name    = "tech-challenge-api-eks"
   cluster_version = "1.29"
-  subnet_ids = [var.subnet_01_id, var.subnet_02_id, var.subnet_03_id]
+  subnet_ids = [var.subnet_01_id, var.subnet_02_id, var.subnet_03_id, var.subnet_04_id, var.subnet_05_id]
   vpc_id = var.vpc_id
 
   cluster_endpoint_public_access  = false
