@@ -14,6 +14,7 @@ jobs:
     env:
       TF_VAR_aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
       TF_VAR_aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      TF_VAR_aws_account: ${{ secrets.AWS_ACCOUNT }}
 
 
     runs-on: ubuntu-latest

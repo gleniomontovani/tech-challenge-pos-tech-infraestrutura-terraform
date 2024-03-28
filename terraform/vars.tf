@@ -34,7 +34,7 @@ variable "vpc_id" {
   default = "vpc-008501f5a531a84b1"
 }
 
-variable "AWSAccount" {
+variable "aws_account" {
   description = "ACCOUNT AWS"
 }
 
