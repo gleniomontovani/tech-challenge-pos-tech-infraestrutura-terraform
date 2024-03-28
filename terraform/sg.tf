@@ -10,7 +10,7 @@ resource "aws_security_group" "sg_tech_challenge_api_eks" {
     protocol    = "tcp"
     cidr_blocks = [var.vpc_cidr_block]
   }
-  
+
   egress {
     description = "All"
     from_port   = 0
