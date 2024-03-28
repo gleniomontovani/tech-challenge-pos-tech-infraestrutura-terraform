@@ -1,14 +1,26 @@
 module "eks" {
   source          = "terraform-aws-modules/eks/aws"
-  cluster_name    = "tech-challenge-api-eks"
+  cluster_name    = "${var.clusterName}-eks"
   cluster_version = "1.29"
-  subnet_ids = [var.subnet_01_id, var.subnet_02_id]
-  vpc_id = var.vpc_id
+  subnet_ids      = [var.subnet_01_private, var.subnet_02_private]
+  vpc_id          = var.vpc_id
 
   cluster_endpoint_public_access  = false
   cluster_endpoint_private_access = true
 
   tags = var.tags
+
+  cluster_addons = {
+    coredns = {
+      most_recent = true
+    }
+    kube-proxy = {
+      most_recent = true
+    }
+    vpc-cni = {
+      most_recent = true
+    }
+  }
 
   eks_managed_node_groups = {
     eks_nodes = {

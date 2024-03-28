@@ -3,7 +3,7 @@ variable "projectName" {
 }
 
 variable "clusterName" {
-  default = "PosTech"
+  default = "tech-challenge-api"
 }
 
 variable "regionDefault" {
@@ -18,24 +18,12 @@ variable "aws_secret_key" {
   description = "SECRET ACCESS AWS"
 }
 
-variable "subnet_01_id" {
+variable "subnet_01_private" {
   default = "subnet-0a8e628515a86f8df"
 }
 
-variable "subnet_02_id" {
+variable "subnet_02_private" {
   default = "subnet-0dc42a41923392500"
-}
-
-variable "subnet_03_id" {
-  default = "subnet-0bd942a3a3550120f"
-}
-
-variable "subnet_04_id" {
-  default = "subnet-04a69234760025f8e"
-}
-
-variable "subnet_05_id" {
-  default = "subnet-0b84de7e928a9376f"
 }
 
 variable "vpc_cidr_block" {
@@ -47,7 +35,7 @@ variable "vpc_id" {
 }
 
 variable "AWSAccount" {
-  default = "211125728576"
+  description = "ACCOUNT AWS"
 }
 
 variable "tags" {
