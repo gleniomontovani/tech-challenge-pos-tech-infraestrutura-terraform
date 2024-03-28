@@ -5,8 +5,8 @@ module "eks" {
   subnet_ids      = [var.subnet_01_private, var.subnet_02_private]
   vpc_id          = var.vpc_id
 
-  cluster_endpoint_public_access  = false
-  cluster_endpoint_private_access = true
+  cluster_endpoint_public_access  = true
+  cluster_endpoint_private_access = false
 
   tags = var.tags
 
