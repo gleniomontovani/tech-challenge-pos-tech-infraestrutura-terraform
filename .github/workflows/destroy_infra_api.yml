@@ -16,7 +16,7 @@ env:
 jobs:
   destroy_infrastructure:
     runs-on: ubuntu-latest
-    name: Destroy Infrastructure the EKS APP
+    name: Destroy Infrastructure the EKS
     env:
       TF_WORKING_DIR: ${{ github.event.inputs.dir }}
       TF_VAR_aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
