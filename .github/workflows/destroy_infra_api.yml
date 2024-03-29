@@ -50,7 +50,12 @@ jobs:
 
       - name: Delete Kubernetes Configuration
         run: |
-          kubectl delete deployment,services,secrets,hpa,configmaps --selector=app=${{ secrets.APP_NAME }}
+          if kubectl get deployment,services,secrets,hpa,configmaps --selector=app=${{ secrets.APP_NAME }}; then
+            echo "Resources exist, proceeding with deletion"
+            kubectl delete deployment,services,secrets,hpa,configmaps --selector=app=${{ secrets.APP_NAME }}
+          else
+            echo "No resources found, skipping deletion"
+          fi
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
