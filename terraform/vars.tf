@@ -3,7 +3,7 @@ variable "projectName" {
 }
 
 variable "clusterName" {
-  default = "tech-challenge-api"
+  default = "tech-challenge"
 }
 
 variable "regionDefault" {
@@ -18,12 +18,24 @@ variable "aws_secret_key" {
   description = "SECRET ACCESS AWS"
 }
 
-variable "subnet_01_private" {
+variable "subnet_01_id" {
   default = "subnet-0a8e628515a86f8df"
 }
 
-variable "subnet_02_private" {
+variable "subnet_02_id" {
   default = "subnet-0dc42a41923392500"
+}
+
+variable "subnet_03_id" {
+  default = "subnet-0bd942a3a3550120f"
+}
+
+variable "subnet_04_id" {
+  default = "subnet-04a69234760025f8e"
+}
+
+variable "subnet_05_id" {
+  default = "subnet-0b84de7e928a9376f"
 }
 
 variable "vpc_cidr_block" {
@@ -41,7 +53,7 @@ variable "aws_account" {
 variable "tags" {
   type = map(string)
   default = {
-    App      = "EKS-APP",
+    App      = "EKS-KUBERNETES",
     Ambiente = "Desenvolvimento"
   }
 }

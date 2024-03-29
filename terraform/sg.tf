@@ -4,11 +4,11 @@ resource "aws_security_group" "sg_tech_challenge_api_eks" {
   vpc_id      = var.vpc_id
 
   ingress {
-    description = "Java"
-    from_port   = 8081
-    to_port     = 8081
+    description = "HTTP"
+    from_port   = 8080
+    to_port     = 8080
     protocol    = "tcp"
-    cidr_blocks = [var.vpc_cidr_block]
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
@@ -20,6 +20,6 @@ resource "aws_security_group" "sg_tech_challenge_api_eks" {
   }
 
   tags = {
-    Name = "sg_tech_challenge_api_eks"
+    Name = "sg_tech_challenge_eks"
   }
 }

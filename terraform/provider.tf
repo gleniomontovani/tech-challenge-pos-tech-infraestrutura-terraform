@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket = "terraform-fiapgp68"
-    key    = "techchallenge-app/terraform.tfstate"
+    key    = "techchallenge-kubernetes/terraform.tfstate"
     region = "us-east-1"
   }
 }
