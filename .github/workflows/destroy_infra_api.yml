@@ -50,20 +50,20 @@ jobs:
 
       - name: Delete Kubernetes Configuration
         run: |
-          if kubectl get deployment,services,secrets,hpa,configmaps --selector="app in ('${{ secrets.APP_NAME }}', '${{ secrets.GATEWAY_NAME }}')"; then
+          if kubectl get deployment,services,secrets,hpa,configmaps --selector="app in (${{ secrets.APP_NAME }}, ${{ secrets.GATEWAY_NAME }})"; then
             echo "Resources exist, proceeding with deletion"
-            kubectl delete deployment,services,secrets,hpa,configmaps --selector="app in ('${{ secrets.APP_NAME }}', '${{ secrets.GATEWAY_NAME }}')"
+            # kubectl delete deployment,services,secrets,hpa,configmaps --selector="app in (${{ secrets.APP_NAME }}, ${{ secrets.GATEWAY_NAME }})"
           else
             echo "No resources found, skipping deletion"
           fi
 
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v2
+      # - name: Setup Terraform
+      #   uses: hashicorp/setup-terraform@v2
 
-      - name: Initialize Terraform
-        run: terraform init
-        working-directory: ./terraform
+      # - name: Initialize Terraform
+      #   run: terraform init
+      #   working-directory: ./terraform
 
-      - name: Destroy Terraform
-        run: terraform apply -destroy -auto-approve
-        working-directory: ./terraform
+      # - name: Destroy Terraform
+      #   run: terraform apply -destroy -auto-approve
+      #   working-directory: ./terraform
