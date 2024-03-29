@@ -1,4 +1,4 @@
-name: Create Infra API
+name: Create Infrastructure
 
 on:
   workflow_dispatch:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   terraform:
-    name: Create Infrastructure EKS APP
+    name: Create Infrastructure EKS
     env:
       TF_VAR_aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
       TF_VAR_aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
