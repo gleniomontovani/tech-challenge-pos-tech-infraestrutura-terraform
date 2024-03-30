@@ -1,3 +1,3 @@
-output "eks_cluster_endpoint" {
-  value = module.eks.cluster_endpoint
+output "aws_cognito_user_pool" {
+  value = aws_cognito_user_pool.user_pool.id
 }
