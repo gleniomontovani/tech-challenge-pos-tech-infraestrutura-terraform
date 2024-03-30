@@ -1,4 +1,4 @@
-name: Destroy Infra API
+name: Destroy Infrastructure
 
 on:
   workflow_dispatch:
@@ -16,7 +16,7 @@ env:
 jobs:
   destroy_infrastructure:
     runs-on: ubuntu-latest
-    name: Destroy Infrastructure the EKS APP
+    name: Destroy Infrastructure EKS
     env:
       TF_WORKING_DIR: ${{ github.event.inputs.dir }}
       TF_VAR_aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -50,9 +50,9 @@ jobs:
 #
 #      - name: Delete Kubernetes Configuration
 #        run: |
-#          if kubectl get deployment,services,secrets,hpa,configmaps --selector=app=${{ secrets.APP_NAME }}; then
+#          if kubectl get deployment,services,secrets,hpa,configmaps --selector="app in (${{ secrets.APP_NAME }}, ${{ secrets.GATEWAY_NAME }})"; then
 #            echo "Resources exist, proceeding with deletion"
-#            kubectl delete deployment,services,secrets,hpa,configmaps --selector=app=${{ secrets.APP_NAME }}
+#            kubectl delete deployment,services,secrets,hpa,configmaps --selector="app in (${{ secrets.APP_NAME }}, ${{ secrets.GATEWAY_NAME }})"
 #          else
 #            echo "No resources found, skipping deletion"
 #          fi
