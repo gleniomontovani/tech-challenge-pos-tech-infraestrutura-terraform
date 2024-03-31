@@ -50,6 +50,34 @@ variable "aws_account" {
   description = "ACCOUNT AWS"
 }
 
+variable "user_pool" {
+  description = "NAME USER POOL"
+}
+
+variable "user_pool_client" {
+  description = "NAME USER POOL CLIENT"
+}
+
+variable "allowed_oauth_scopes" {
+ description = "ALLOWED OAUTH SCOPES"
+}
+
+variable "user_pool_domain" {
+ description = "USER POOL DOMAIN"
+}
+
+variable "cognito_resource_server_name" {
+  description = "NAME RESOURCE SERVER COGNITO"
+}
+
+variable "cognito_resource_server_identifier" {
+  description = "IDENTIFIER RESOURCE SERVER COGNITO"
+}
+
+variable "cognito_scope_name" {
+  description = "SCOPE NAME COGNITO"
+}
+
 variable "tags" {
   type = map(string)
   default = {
