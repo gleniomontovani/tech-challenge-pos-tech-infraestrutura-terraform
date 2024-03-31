@@ -3,7 +3,6 @@ locals {
   non_required_attributes = ["groups"]
 }
 
-
 resource "aws_cognito_user_pool" "user_pool" {
   name                = var.user_pool
   username_attributes = ["email"]
@@ -22,6 +21,7 @@ resource "aws_cognito_user_pool" "user_pool" {
       }
     }
   }
+
   dynamic "schema" {
     for_each = local.non_required_attributes
     content {
