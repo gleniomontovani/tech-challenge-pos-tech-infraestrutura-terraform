@@ -1,14 +1,3 @@
-#terraform {
-#  required_version = "~> 1.6"
-#
-#  required_providers {
-#    aws = {
-#      source  = "hashicorp/aws"
-#      version = "~> 5.20"
-#    }
-#  }
-#}
-
 locals {
   required_attributes     = ["name", "profile", "email"]
   non_required_attributes = ["groups"]
