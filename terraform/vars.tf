@@ -50,6 +50,22 @@ variable "aws_account" {
   description = "ACCOUNT AWS"
 }
 
+variable "queue_solicitacao_pedido" {
+  default = "solicitacao-pedido"
+}
+
+variable "queue_pagamento_pendente" {
+  default = "pagamento-pendente"
+}
+
+variable "queue_pagamento_confirmado" {
+  default = "pagamento-confirmado"
+}
+
+variable "queue_pedido_confirmado" {
+  default = "pedido-confirmado"
+}
+
 variable "user_pool" {
   description = "NAME USER POOL"
 }
@@ -81,7 +97,7 @@ variable "cognito_scope_name" {
 variable "tags" {
   type = map(string)
   default = {
-    App      = "EKS-KUBERNETES",
+    App      = "TECH-CHALLENGE-POS-TECH",
     Ambiente = "Desenvolvimento"
   }
 }
