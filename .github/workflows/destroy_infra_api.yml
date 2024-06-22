@@ -58,9 +58,10 @@ jobs:
 
       - name: Delete Kubernetes Configuration
         run: |
-          if kubectl get deployment,services,secrets,hpa,configmaps --selector="app in (${{ secrets.APP_NAME }}, ${{ secrets.APP_NAME_PEDIDO }}, ${{ secrets.APP_NAME_PAGAMENTO }}, ${{ secrets.APP_NAME_PRODUCAO }}, ${{ secrets.GATEWAY_NAME }})"; then
+          NAMESPACE=my-namespace
+          if kubectl get deployment,services,secrets,hpa,configmaps --selector="app in (${{ secrets.APP_NAME }}, ${{ secrets.APP_NAME_PEDIDO }}, ${{ secrets.APP_NAME_PAGAMENTO }}, ${{ secrets.APP_NAME_PRODUCAO }}, ${{ secrets.GATEWAY_NAME }})" --namespace=$NAMESPACE; then
             echo "Resources exist, proceeding with deletion"
-            kubectl delete deployment,services,secrets,hpa,configmaps --selector="app in (${{ secrets.APP_NAME }}, ${{ secrets.APP_NAME_PEDIDO }}, ${{ secrets.APP_NAME_PAGAMENTO }}, ${{ secrets.APP_NAME_PRODUCAO }}, ${{ secrets.GATEWAY_NAME }})"
+            kubectl delete deployment,services,secrets,hpa,configmaps --selector="app in (${{ secrets.APP_NAME }}, ${{ secrets.APP_NAME_PEDIDO }}, ${{ secrets.APP_NAME_PAGAMENTO }}, ${{ secrets.APP_NAME_PRODUCAO }}, ${{ secrets.GATEWAY_NAME }})" --namespace=$NAMESPACE
           else
             echo "No resources found, skipping deletion"
           fi
